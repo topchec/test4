@@ -8,6 +8,7 @@ public class location : MonoBehaviour
     public GameObject[] roomPrefabs0;
     public GameObject[] roomPrefabs1;
     public GameObject[] roomPrefabs2;
+    public GameObject[] roomPrefabs3;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,8 @@ public class location : MonoBehaviour
             GameObject newLocatio1 = Instantiate(roomPrefabs0[0], spawnPosition1, Quaternion.identity);
             Vector2 spawnPosition2 = new Vector2(39.9f,11.47f);
             GameObject newLocation2 = Instantiate(roomPrefabs0[1], spawnPosition2, Quaternion.identity);
+            Vector2 spawnPosition3 = new Vector2(265.75f, 17.05f);
+            GameObject newLocation3 = Instantiate(roomPrefabs3[0], spawnPosition3, Quaternion.identity);
         }
         else if (randomIndex0 == 1)
         {
@@ -61,6 +64,8 @@ public class location : MonoBehaviour
             GameObject newLocation1 = Instantiate(roomPrefabs0[1], spawnPosition1, Quaternion.identity);
             Vector2 spawnPosition2 = new Vector2(242.55f,-21.76f);
             GameObject newLocation2 = Instantiate(roomPrefabs0[0], spawnPosition2, Quaternion.identity);
+            Vector2 spawnPosition3 = new Vector2(265.51f, 17.06f);
+            GameObject newLocation3 = Instantiate(roomPrefabs3[0], spawnPosition3, Quaternion.identity);
         }
     }
     void spawn1()
@@ -74,6 +79,8 @@ public class location : MonoBehaviour
             GameObject newLocation1 = Instantiate(roomPrefabs1[0], spawnPosition1, Quaternion.identity);
             Vector2 spawnPosition2 = new Vector2(39.84f,11.45f);
             GameObject newLocation2 = Instantiate(roomPrefabs1[1], spawnPosition2, Quaternion.identity);
+            Vector2 spawnPosition3 = new Vector2(264.7f, 17.1f);
+            GameObject newLocation3 = Instantiate(roomPrefabs3[0], spawnPosition3, Quaternion.identity);
         }
         else if (randomIndex0 == 1)
         {
@@ -81,6 +88,8 @@ public class location : MonoBehaviour
             GameObject newLocation1 = Instantiate(roomPrefabs1[1], spawnPosition1, Quaternion.identity);
             Vector2 spawnPosition2 = new Vector2(166.54f,3.63f);
             GameObject newLocation2 = Instantiate(roomPrefabs1[0], spawnPosition2, Quaternion.identity);
+            Vector2 spawnPosition3 = new Vector2(265.49f, 17.03f);
+            GameObject newLocation3 = Instantiate(roomPrefabs3[0], spawnPosition3, Quaternion.identity);
         }
     }
     void spawn2()
@@ -94,6 +103,8 @@ public class location : MonoBehaviour
             GameObject newLocation1 = Instantiate(roomPrefabs2[0], spawnPosition1, Quaternion.identity);
             Vector2 spawnPosition2 = new Vector2(242.7f,-21.76f);
             GameObject newLocation2 = Instantiate(roomPrefabs2[1], spawnPosition2, Quaternion.identity);
+            Vector2 spawnPosition3 = new Vector2(265.51f, 17.06f);
+            GameObject newLocation3 = Instantiate(roomPrefabs3[0], spawnPosition3, Quaternion.identity);
         }
         else if (randomIndex0 == 1)
         {
@@ -101,6 +112,8 @@ public class location : MonoBehaviour
             GameObject newLocatio1 = Instantiate(roomPrefabs2[1], spawnPosition1, Quaternion.identity);
             Vector2 spawnPosition2 = new Vector2(166.5f,3.58f);
             GameObject newLocation2 = Instantiate(roomPrefabs2[0], spawnPosition2, Quaternion.identity);
+            Vector2 spawnPosition3 = new Vector2(264.7f, 17.1f);
+            GameObject newLocation3 = Instantiate(roomPrefabs3[0], spawnPosition3, Quaternion.identity);
         }
     }
 
