@@ -666,19 +666,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4805181885227780, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3321868
+      value: 1.3904268
       objectReference: {fileID: 0}
     - target: {fileID: 4805181885227780, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.3177
+      value: 1.3094786
       objectReference: {fileID: 0}
     - target: {fileID: 4805181885227780, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7398
+      value: 2.79
       objectReference: {fileID: 0}
     - target: {fileID: 4805181885227780, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1398426
+      value: -1.21
       objectReference: {fileID: 0}
     - target: {fileID: 4805181885227780, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -710,6 +710,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4805181885227780, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805181885227780, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 61252362154681264, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
@@ -3845,17 +3849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f10778c26604e479211cba15277ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollDistance: 4
-  rollDuration: 1
-  rollCooldown: 1.2
-  obstacleLayer:
-    m_Bits: 0
-  rb: {fileID: 0}
-  isRolling: 0
-  canRoll: 1
-  rollTargetPosition: {x: 0, y: 0}
-  rollStartPosition: {x: 0, y: 0}
-  rollStartTime: 0
 --- !u!114 &754834790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3868,7 +3861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52398059eb6b65d4d9baf5e4bf9b868f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
 --- !u!50 &754834791
 Rigidbody2D:
   serializedVersion: 4
@@ -3970,27 +3962,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c046db06674c44d8e7be5f10849b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  jumpForce: 10
-  wallJumpForce: 10
-  wallJumpHorizontalForce: 8
-  wallCheckDistance: 0.8
-  wallLayer:
-    m_Bits: 64
-  wallCheckPoint: {fileID: 246633287}
-  groundCheckRadius: 0.3
-  groundCheckPoint: {fileID: 2036234530}
-  groundLayer:
-    m_Bits: 8
-  wallSlideSpeed: 2
-  wallJumpCooldown: 0.2
-  rb: {fileID: 0}
-  horizontalInput: 0
-  isGrounded: 0
-  isTouchingWall: 0
-  isWallSliding: 0
-  canWallJump: 1
-  wallJumpTimer: 0
 --- !u!212 &754834797
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4076,23 +4047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9ffa6a67d8db7408be1c430f3de401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  invincibilityTime: 1
-  onDamageTaken:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  onHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  isInvincible: 0
-  invincibilityTimer: 0
 --- !u!1 &764556225
 GameObject:
   m_ObjectHideFlags: 0
@@ -8101,13 +8055,12 @@ MonoBehaviour:
   m_attackRange: 1.5
   m_agroDistance: 5
   m_jumpDistance: 5
-  m_attackArea: 0
+  m_attackArea: 1.5
   hp: 10
   damage: 2
-  coins: 3
-  attackOffset: {x: 0, y: 0, z: 0}
+  attackOffset: {x: 0, y: 1, z: 900}
   m_groundSensor: {fileID: 60098740}
-  player: {fileID: 0}
+  player: {fileID: 1010302914}
   m_grounded: 0
   m_combatIdle: 0
   m_isJump: 0
@@ -9232,6 +9185,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9043920546160527475, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+      propertyPath: m_jumpForce
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043920546160527475, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_slideDust
       value: 
       objectReference: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
@@ -10153,23 +10110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9ffa6a67d8db7408be1c430f3de401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  invincibilityTime: 1
-  onDamageTaken:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  onHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
-  isInvincible: 0
-  invincibilityTimer: 0
 --- !u!114 &2060115508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10182,26 +10122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39bc9d40c9957a43a852abd0c2e853c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  jumpForce: 10
-  groundCheckRadius: 0.2
-  attackCooldown: 0.5
-  attackRange: 0.6
-  attackDamage: 10
-  groundCheck: {fileID: 1082748048}
-  groundLayer:
-    m_Bits: 8
-  attackPoint: {fileID: 2083902590}
-  rb: {fileID: 0}
-  animator: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  horizontalInput: 0
-  isGrounded: 0
-  isFacingRight: 1
-  canAttack: 1
-  isAttacking: 0
-  isJumping: 0
-  isRunning: 0
 --- !u!95 &2060115509
 Animator:
   serializedVersion: 5

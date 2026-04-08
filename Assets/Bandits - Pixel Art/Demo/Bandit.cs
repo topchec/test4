@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿                                                                                                                                                                                                                                                                                                                                                                          using UnityEngine;
 using System.Collections;
 
 public class Bandit : MonoBehaviour {
@@ -13,7 +13,6 @@ public class Bandit : MonoBehaviour {
 
     public int hp = 10;
     public int damage = 2;
-    public int coins = 3;
     public Vector3 attackOffset;
 
     private Animator            m_animator;
@@ -117,7 +116,6 @@ public class Bandit : MonoBehaviour {
 
         if (hp <= 0)
         {
-            Drop();
             gameObject.tag = "Corsp";
             m_animator.SetInteger("AnimState", 0);
             m_animator.SetTrigger("Death");
@@ -126,16 +124,5 @@ public class Bandit : MonoBehaviour {
             m_animator.SetInteger("AnimState", 1);
         }
 
-    }
-
-    public void Drop()
-    {
-
-        for (int i = 0; i < coins; i++)
-        {
-            GameObject coin_obj = Instantiate(coin, this.transform);
-            coin_obj.transform.parent = null;
-           
-        }
     }
 }

@@ -8,6 +8,7 @@ public class HeroKnight : MonoBehaviour {
 
     [SerializeField] float      m_speed = 6.8f;
     [SerializeField] float      m_jumpForce = 7.5f;
+    [SerializeField] float      m_wallJumpForce = 10f; // Новая переменная для силы прыжка от стены
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
     [SerializeField] Slider     Sliderm_slider;
@@ -22,7 +23,7 @@ public class HeroKnight : MonoBehaviour {
     private Sensor_HeroKnight   m_wallSensorL2;
     private bool                m_isWallSliding = false;
     public int                  hp = 10;
-    public int                  damage = 2;
+    public int                  damage = 5;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
     private int                 m_facingDirection = 1;
@@ -33,7 +34,7 @@ public class HeroKnight : MonoBehaviour {
     private float               m_rollCurrentTime;
     private float               m_wallContactTime = 0f;
     private bool                m_wasWallSliding = false;
-    private float               m_wallJumpCooldown = 0f; // Добавлена переменная для задержки
+    private float               m_wallJumpCooldown = 0f;
 
     void Start ()
     {
@@ -97,7 +98,7 @@ public class HeroKnight : MonoBehaviour {
         m_wasWallSliding = m_isWallSliding;
         
         bool isMovingAwayFromWall = false;
-        if (!m_grounded && isTouchingWall && m_wallJumpCooldown <= 0) // Добавлена проверка на задержку
+        if (!m_grounded && isTouchingWall && m_wallJumpCooldown <= 0)
         {
             if (isTouchingWallRight)
                 isMovingAwayFromWall = inputX < 0;
@@ -106,11 +107,10 @@ public class HeroKnight : MonoBehaviour {
         }
         else
         {
-            // Если на задержке, игнорируем стены
             isMovingAwayFromWall = true;
         }
         
-        if (!m_grounded && isTouchingWall && !isMovingAwayFromWall && m_wallJumpCooldown <= 0) // Добавлена проверка на задержку
+        if (!m_grounded && isTouchingWall && !isMovingAwayFromWall && m_wallJumpCooldown <= 0)
         {
             m_wallContactTime += Time.deltaTime;
             
@@ -214,7 +214,7 @@ public class HeroKnight : MonoBehaviour {
     {
         m_animator.SetTrigger("Jump");
         
-        // Если прыжок со стены, добавляем горизонтальный толчок и задержку
+        // Если прыжок со стены
         if (m_isWallSliding)
         {
             // Определяем сторону стены
@@ -223,21 +223,21 @@ public class HeroKnight : MonoBehaviour {
             
             if (onRightWall)
             {
-                // Отталкиваемся влево
-                m_body2d.velocity = new Vector2(-m_jumpForce, m_jumpForce);
+                // Отталкиваемся влево с увеличенной силой
+                m_body2d.velocity = new Vector2(-m_wallJumpForce, m_wallJumpForce);
             }
             else if (onLeftWall)
             {
-                // Отталкиваемся вправо
-                m_body2d.velocity = new Vector2(m_jumpForce, m_jumpForce);
+                // Отталкиваемся вправо с увеличенной силой
+                m_body2d.velocity = new Vector2(m_wallJumpForce, m_wallJumpForce);
             }
             else
             {
-                // Если стена не определена, обычный прыжок
+                // Если стена не определена, используем обычный прыжок
                 m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
             }
             
-            // Устанавливаем задержку перед повторным зацеплением за стену (1 секунда)
+            // Устанавливаем задержку перед повторным зацеплением за стену
             m_wallJumpCooldown = 1.0f;
             
             // Сбрасываем состояние скольжения
@@ -247,7 +247,7 @@ public class HeroKnight : MonoBehaviour {
         }
         else
         {
-            // Обычный прыжок с земли
+            // Обычный прыжок с земли (сила 7.5)
             m_body2d.velocity = new Vector2(m_body2d.velocity.x, m_jumpForce);
         }
         
@@ -255,6 +255,7 @@ public class HeroKnight : MonoBehaviour {
         m_animator.SetBool("Grounded", m_grounded);
         m_groundSensor.Disable(0.2f);
     }
+    
     public void GetDamage(int damage)
     {
         hp-=damage;
@@ -269,6 +270,7 @@ public class HeroKnight : MonoBehaviour {
             
         }
     }
+    
     void AE_SlideDust()
     {
         if (m_slideDust == null) return;
