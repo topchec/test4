@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 public class hpbar : MonoBehaviour
 {
-    Image healthbar;
+    Image healthBar;
     public float maxhp = 100f;
-    public float HP;
+    public HeroKnight HP;
     // Start is called before the first frame update
     void Start()
     {
-        healthbar = GetComponent<Image>();
-        HP = maxhp;
+        healthBar = GetComponent<Image>();
+        HP = GameObject.Find("Player").GetComponent<HeroKnight>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-         healthbar.fillAmount = HP/maxhp;
+        healthBar.fillAmount = HP.hp / maxhp;
     }
 }

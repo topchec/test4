@@ -112,7 +112,7 @@ public class location : MonoBehaviour
             GameObject newLocatio1 = Instantiate(roomPrefabs2[1], spawnPosition1, Quaternion.identity);
             Vector2 spawnPosition2 = new Vector2(166.5f,3.58f);
             GameObject newLocation2 = Instantiate(roomPrefabs2[0], spawnPosition2, Quaternion.identity);
-            Vector2 spawnPosition3 = new Vector2(264.7f, 17.1f);
+            Vector2 spawnPosition3 = new Vector2(264.7f, 17.04f);
             GameObject newLocation3 = Instantiate(roomPrefabs3[0], spawnPosition3, Quaternion.identity);
         }
     }
