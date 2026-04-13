@@ -11,7 +11,7 @@ public class HeroKnight : MonoBehaviour {
     [SerializeField] float      m_wallJumpForce = 10f; // Новая переменная для силы прыжка от стены
     [SerializeField] float      m_rollForce = 6.0f;
     [SerializeField] bool       m_noBlood = false;
-    [SerializeField] Slider     Sliderm_slider;
+    [SerializeField] Slider     healthSlider;
     [SerializeField] GameObject m_slideDust;
 
     private Animator            m_animator;
@@ -22,8 +22,9 @@ public class HeroKnight : MonoBehaviour {
     private Sensor_HeroKnight   m_wallSensorL1;
     private Sensor_HeroKnight   m_wallSensorL2;
     private bool                m_isWallSliding = false;
-    public int                  hp = 10;
+    public int                  hp = 100;
     public int                  damage = 5;
+    private bool                isDead = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
     private int                 m_facingDirection = 1;
@@ -39,6 +40,7 @@ public class HeroKnight : MonoBehaviour {
     void Start ()
     {
         m_animator = GetComponent<Animator>();
+        healthSlider = FindObjectOfType<Slider>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
         m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_HeroKnight>();
@@ -258,14 +260,15 @@ public class HeroKnight : MonoBehaviour {
     
     public void GetDamage(int damage)
     {
+        if (isDead) return;
         hp-=damage;
-        Sliderm_slider.value = hp;
+        healthSlider.value = hp;
         m_animator.SetTrigger("Hurt");
 
         if (hp <= 0)
         {
+            isDead = true;
             m_animator.SetTrigger("Death");
-            gameObject.tag = "Corsp";
             this.enabled= false;
             
         }

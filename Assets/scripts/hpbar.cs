@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class hpbar : MonoBehaviour
 {
-    Image healthBar;
-    public float maxhp = 100f;
+    private Image healthBar;
     public HeroKnight HP;
-    // Start is called before the first frame update
+    private float maxHp;
+
     void Start()
     {
         healthBar = GetComponent<Image>();
-        HP = GameObject.Find("Player").GetComponent<HeroKnight>();
+        if (HP == null)
+            HP = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroKnight>();
         
+        if (HP != null)
+            maxHp = HP.hp;   // сохраняем начальное здоровье как максимум
     }
 
-    // Update is called once per frame
     void Update()
     {
-        healthBar.fillAmount = HP.hp / maxhp;
+        if (HP != null && healthBar != null)
+            healthBar.fillAmount = (float)HP.hp / maxHp;
     }
 }

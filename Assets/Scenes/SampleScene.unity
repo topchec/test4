@@ -664,6 +664,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1943394156383696, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4805181885227780, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3904268
@@ -718,19 +722,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 61252362154681264, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_Size.x
-      value: 0.716224
+      value: 0.5940788
       objectReference: {fileID: 0}
     - target: {fileID: 61252362154681264, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_Size.y
-      value: 1.1674241
+      value: 1.1279514
       objectReference: {fileID: 0}
     - target: {fileID: 61252362154681264, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_Offset.x
-      value: 0.021887988
+      value: 0.024543181
       objectReference: {fileID: 0}
     - target: {fileID: 61252362154681264, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: m_Offset.y
-      value: 0.6457121
+      value: 0.6654484
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114850797635947820, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
@@ -5357,7 +5361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc570bd0d610654a991443358f1cc38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhp: 100
   HP: {fileID: 1010302919}
 --- !u!114 &998515362
 MonoBehaviour:
@@ -6874,6 +6877,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1454947014 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2900218875308588589, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+  m_PrefabInstance: {fileID: 1886780504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1491353417
 GameObject:
   m_ObjectHideFlags: 0
@@ -8089,12 +8097,13 @@ MonoBehaviour:
   m_attackRange: 1.5
   m_agroDistance: 5
   m_jumpDistance: 5
-  m_attackArea: 1.5
+  m_attackArea: 2
+  m_attackCooldown: 0
   hp: 10
   damage: 2
-  attackOffset: {x: 0, y: 1, z: 900}
+  attackOffset: {x: 1, y: 0, z: 1}
   m_groundSensor: {fileID: 60098740}
-  player: {fileID: 1010302914}
+  player: {fileID: 1454947014}
   m_grounded: 0
   m_combatIdle: 0
   m_isJump: 0
@@ -9158,6 +9167,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 111755813442870902, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2954181336601895002, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_SortingOrder
       value: 1
