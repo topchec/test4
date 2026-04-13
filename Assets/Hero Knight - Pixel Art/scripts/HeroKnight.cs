@@ -40,7 +40,6 @@ public class HeroKnight : MonoBehaviour {
     void Start ()
     {
         m_animator = GetComponent<Animator>();
-        healthSlider = FindObjectOfType<Slider>();
         m_body2d = GetComponent<Rigidbody2D>();
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
         m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_HeroKnight>();
@@ -269,8 +268,10 @@ public class HeroKnight : MonoBehaviour {
         {
             isDead = true;
             m_animator.SetTrigger("Death");
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Collider2D>().enabled = false;
             this.enabled= false;
-            
+            gameObject.tag = "Corpse";
         }
     }
     
