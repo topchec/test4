@@ -354,11 +354,11 @@ GameObject:
   - component: {fileID: 7315701022039742954}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: camera
+  m_TagString: ZoneCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9131349218156666165
 Transform:
   m_ObjectHideFlags: 0
@@ -381,7 +381,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121308409018108039}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -8691,7 +8691,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -12.339968, y: -3.6214542}
+  m_Offset: {x: -34.899464, y: -3.6214542}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8702,7 +8702,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 28.730785, y: 21.387081}
+  m_Size: {x: 0.19428253, y: 21.387081}
   m_EdgeRadius: 0
 --- !u!114 &8661370719554103963
 MonoBehaviour:
@@ -8711,12 +8711,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6974561086889354242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 449a66f166bdd6a4fa85458a3ce5b530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1357427157176807651}
   zoomOutDistance: 10
   zoomSpeed: 2
 --- !u!1 &7211478160680021023
