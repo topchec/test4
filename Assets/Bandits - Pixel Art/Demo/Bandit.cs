@@ -175,7 +175,7 @@ public class Bandit : MonoBehaviour
     public float m_speed = 3f;
     public float m_jumpForce = 7.5f;
     public float inputX = 1;
-    public float m_attackRange = 3f;
+    public float m_attackRange = 1.5f;
     public float m_agroDistance = 5f;
     public float m_jumpDistance = 5f;
     public float m_attackArea;

@@ -8193,15 +8193,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 3
   m_jumpForce: 7.5
-  inputX: 0.94
-  m_attackRange: 2
+  inputX: 1
+  m_attackRange: 1.5
   m_agroDistance: 5
   m_jumpDistance: 5
   m_attackArea: 2
   m_attackCooldown: 0
   hp: 10
   damage: 2
-  attackOffset: {x: 0, y: 0.8, z: 0}
+  attackOffset: {x: 1, y: 0, z: 1}
   m_groundSensor: {fileID: 60098740}
   player: {fileID: 1454947014}
   m_grounded: 0
