@@ -22,7 +22,8 @@ public class HeroKnight : MonoBehaviour {
     private Sensor_HeroKnight   m_wallSensorL1;
     private Sensor_HeroKnight   m_wallSensorL2;
     private bool                m_isWallSliding = false;
-    public int                  hp = 100;
+    public int                  max_hp = 100;
+    public int                  hp;
     public int                  damage = 5;
     private bool                isDead = false;
     private bool                m_grounded = false;
@@ -37,6 +38,9 @@ public class HeroKnight : MonoBehaviour {
     private bool                m_wasWallSliding = false;
     private float               m_wallJumpCooldown = 0f;
 
+    public Vector3 attackOffset;
+    float inputX;
+    public float m_attackArea;
     void Start ()
     {
         m_animator = GetComponent<Animator>();
@@ -46,12 +50,22 @@ public class HeroKnight : MonoBehaviour {
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+        hp = max_hp;
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 pos = transform.position;
+        pos += transform.right * attackOffset.x * m_facingDirection;
+        pos += transform.up * attackOffset.y;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(pos, m_attackArea);
+    }
     void Update ()
     {
         m_timeSinceAttack += Time.deltaTime;
-        
+        healthSlider.maxValue = max_hp;
+        healthSlider.value= hp;
         // Обновляем таймер задержки прыжка от стены
         if (m_wallJumpCooldown > 0)
             m_wallJumpCooldown -= Time.deltaTime;
@@ -74,7 +88,7 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetBool("Grounded", m_grounded);
         }
 
-        float inputX = Input.GetAxis("Horizontal");
+        inputX = Input.GetAxis("Horizontal");
 
         if (inputX > 0)
         {
@@ -286,5 +300,25 @@ public class HeroKnight : MonoBehaviour {
         GameObject dust = Instantiate(m_slideDust, spawnPosition, gameObject.transform.localRotation);
         dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
         Destroy(dust, 1.0f);
+    }
+
+    public void Attack()
+    {
+        // Запуск анимации атаки
+        Vector3 pos = transform.position;
+        pos += transform.right * attackOffset.x * -m_facingDirection;
+        pos += transform.up * attackOffset.y;
+        Collider2D hitPlayer = Physics2D.OverlapCircle(pos, m_attackArea);
+        
+        if (hitPlayer != null && hitPlayer.GetComponent<Bandit>())
+        {
+            hitPlayer.GetComponent<Bandit>().GetDamage(damage);
+        }
+        else if (hitPlayer != null && hitPlayer.GetComponent<Boss>())
+        {
+            hitPlayer.GetComponent<Boss>().GetDamage(damage);
+        }
+
+
     }
 }

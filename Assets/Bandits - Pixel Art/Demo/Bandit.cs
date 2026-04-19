@@ -76,7 +76,7 @@ public class Bandit : MonoBehaviour
 
             if (Time.time >= m_nextAttackTime)
             {
-                Attack();
+                m_animator.SetTrigger("Attack");
                 m_nextAttackTime = Time.time + m_attackCooldown;
             }
         }
@@ -107,7 +107,7 @@ public class Bandit : MonoBehaviour
     {
         if (player != null)
         {
-            if (player.position.x < transform.position.x)
+            if (player.position.x <= transform.position.x)
                 inputX = -1;
             else
                 inputX = 1;
@@ -128,7 +128,6 @@ public class Bandit : MonoBehaviour
     public void Attack()
     {
         // Запуск анимации атаки
-        m_animator.SetTrigger("Attack");
 
         Vector3 pos = transform.position;
         pos += transform.right * attackOffset.x * -inputX;
@@ -138,17 +137,18 @@ public class Bandit : MonoBehaviour
         if (hitPlayer != null && hitPlayer.GetComponent<HeroKnight>())
         {
             hitPlayer.GetComponent<HeroKnight>().GetDamage(damage);
+            Debug.Log("Бандит атаковал");
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Vector3 pos = transform.position;
-        pos += transform.right * attackOffset.x * -inputX; 
-        pos += transform.up * attackOffset.y;
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(pos, m_attackArea);
-    }
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Vector3 pos = transform.position;
+    //    pos += transform.right * attackOffset.x * -inputX; 
+    //    pos += transform.up * attackOffset.y;
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(pos, m_attackArea);
+    //}
 
     public void GetDamage(int damage)
     {
